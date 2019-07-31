@@ -52,6 +52,7 @@
       if($count == 1) {
           session_start();
 //         session_register("myusername");
+         $_SESSION['tenantID'] = $row['tenantID'];//storing username
          $_SESSION['user'] = $myusername;//storing username
          $_SESSION['password'] = $mypassword;
           $_SESSION['id']=$row['tenantID'];

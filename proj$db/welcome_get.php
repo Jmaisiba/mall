@@ -24,7 +24,10 @@
     <div class="main">
     <h1>Welcome! We are happy to have you using our services </h1>  <?php 
     session_start();
-    echo $_SESSION['user']; ?><br>
+    echo $_SESSION['user']; 
+    // echo  $_SESSION['tenantID'];
+    
+    ?><br>
 	
         <h2> <font color="white"> Checking on your rent progress? </font></h2>
 	<style>
@@ -111,7 +114,7 @@ input[type=submit]:hover {
     <?php
         include ("config.php");
     if(isset($_POST['submit'])){
-    $sql = "INSERT INTO reports (reportID,tenantID,houseID,category,importance,msg) VALUES ('NULL','".$_SESSION['id']."','".$_POST['house_no']."','".$_POST['problem']."','".$_POST['urgency']."','".$_POST['fullnames']." : ".$_POST['subject']."')";
+    $sql = "INSERT INTO reports (reportID,tenantID,houseID,category,importance,msg) VALUES ('NULL','". $_SESSION['tenantID']."','".$_POST['house_no']."','".$_POST['problem']."','".$_POST['urgency']."','".$_POST['fullnames']." : ".$_POST['subject']."')";
 
 if ($conn->query($sql) === TRUE) {
     echo "Report has been successully sent";
